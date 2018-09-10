@@ -1,0 +1,21 @@
+Sub name()
+
+On Error GoTo ErrBox
+
+    Dim nameBox, textBox As String
+    
+    nameBox = ActiveSheet.Shapes(Application.Caller).name
+    
+    textBox = ActiveSheet.Shapes(nameBox).TextFrame.Characters.Text
+    
+    Worksheets(textBox).Activate
+        
+Done:
+    
+Exit Sub
+
+ErrBox:
+
+MsgBox ("There is no such a worksheet as " & textBox & ". Check for the spelling mistakes.")
+
+End Sub
